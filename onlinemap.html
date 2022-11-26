@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <title>My Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+</head>
+    <style>
+        #map {width: 1600px; height: 700px}
+    </style>
+<body>
+    <div id="map"></div>
+</body>
+
+<script>
+    var map_center = [13.454, 122.607];
+    var mapOptions = {
+    center: map_center,
+    zoom: 5.5
+    }
+var map = L.map('map', mapOptions);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 12,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+Home_latlong = [14.87142, 120.46573];
+Home_marker = L.marker(Home_latlong).addTo(map);
+SMAG_latlong = [14.96802, 120.63281];
+SMAG_circle = L.circle(SMAG_latlong, {radius: 10000, color: 'red'}).addTo(map);
+Panay_latlong = [11.0915, 122.5516];
+Panay_circle = L.circle(Panay_latlong, {radius: 15000, color: 'pink'}).addTo(map);
+manila_latlong = [14.60006, 120.96434];
+manila_marker = L.marker(manila_latlong).addTo(map);
+
+var initialline_latlngs = [
+[   [13.8128, 120.9586],
+    [11.1467, 120.9343],
+    [13.9267, 123.6192],
+    [11.1467, 120.9343],
+    [9.3392, 123.8537],
+    [11.1467, 120.9343],
+    [7.6603, 120.6398]
+    ]
+];
+polyline = L.polyline(initialline_latlngs, {color: 'red'}).addTo(map);
+
+</script>
+</html>
